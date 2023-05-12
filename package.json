@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@guidepup/guidepup": "^0.17.1",
+    "@guidepup/playwright": "^0.10.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.33.0"
+  },
+  "scripts": {}
+}
