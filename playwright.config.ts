@@ -1,4 +1,4 @@
-import { PlaywrightTestConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
 /**
  * Read environment variables from file.
@@ -6,15 +6,14 @@ import { PlaywrightTestConfig, devices } from '@playwright/test';
  */
 // require('dotenv').config();
 
-const config: PlaywrightTestConfig = {
+export default defineConfig({
   testDir: './tests',
   retries: 2,
   reportSlowTests: null,
   timeout: 4 * 60 * 1000,
-  reporter: 'html',
+  reporter: [ ['html', { open: 'never' }] ],
   use: {
-    // baseURL: 'http://127.0.0.1:3000',
-
+    baseURL: 'https://nimbleapproach.com',
     trace: 'on-first-retry',
   },
 
@@ -24,5 +23,15 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'], video: "on" },
     },
+    {
+      name: 'NVDA',
+      testMatch: /.*.nvda.spec.ts/,
+      retries: 0
+    },
+    {
+      name: 'VoiceOver',
+      testMatch: /.*.vo.spec.ts/,
+      retries: 0
+    }
   ],
-}
+})
