@@ -19,7 +19,15 @@ _Coming soon_
 
 ## Running the tests
 
-To execute the tests, run the command `npx playwright test --headed`
+To execute all of the tests, run the command `npx playwright test --headed`
+
+### Windows
+
+`npx playwright test --headed --project=NVDA`
+
+### MacOS
+
+`npx playwright test --headed --project=VoiceOver`
 
 ## Linting
 
