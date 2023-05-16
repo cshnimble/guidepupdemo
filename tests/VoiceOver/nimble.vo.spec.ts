@@ -1,5 +1,5 @@
 import { voiceOver } from "@guidepup/guidepup";
-import { test,expect } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 
 test.describe("Nimble website VoiceOver", () => {
 

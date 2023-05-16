@@ -1,5 +1,5 @@
-import { WindowsKeyCodes, nvda } from "@guidepup/guidepup";
-import { test, Page, expect } from "@playwright/test";
+import { nvda } from "@guidepup/guidepup";
+import { test, expect } from "@playwright/test";
 
 test.describe("Nimble website NVDA", () => {
 
