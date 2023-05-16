@@ -1,0 +1,42 @@
+name: Run VoiceOver tests (MacOS)
+
+on:
+  push:
+    branches:
+    - main
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: 18.x
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+
+    - name: checkout code
+      uses: actions/checkout@v2
+    
+    - name: Setup Environment
+      uses: guidepup/setup-action@0.11.2
+    
+    - name: install dependencies
+      run: npm install
+
+    - name: run tests
+      run: npx playwright test --project=VoiceOver
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
