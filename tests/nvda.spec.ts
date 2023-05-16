@@ -4,15 +4,7 @@ import { itemTextSnapshot } from "../fixtures/itemTextSnapshot";
 
 test.describe("Playwright NVDA", () => {
 
-  // test.beforeEach(async() => {
-  //   await nvda.start()
-  // })
-
-  test.afterEach(async() => {
-    await nvda.stop()
-  })
-
-  test("I can navigate the Guidepup Github page", async ({
+  test.beforeEach(async({
     page
   }) => {
     // Navigate to Guidepup GitHub page
@@ -26,8 +18,15 @@ test.describe("Playwright NVDA", () => {
     await page.bringToFront();
     // Start NVDA
     await nvda.start();
+  })
 
-    // Move across the page menu to the Guidepup heading using VoiceOver
+  test.afterEach(async() => {
+    await nvda.stop()
+  })
+
+  test("I can navigate the Guidepup Github page", async () => {
+
+    // Move across the page menu to the Guidepup heading using NVDA
     while (!(await nvda.lastSpokenPhrase()).includes("Guidepup, heading, level 1")) {
       await nvda.perform(nvda.keyboardCommands.moveToNextHeading);
     }

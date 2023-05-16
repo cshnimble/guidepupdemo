@@ -20,3 +20,7 @@ _Coming soon_
 ## Running the tests
 
 To execute the tests, run the command `npx playwright test --headed`
+
+## Linting
+
+Eslint has been set up including the [eslint playwright plugin](https://www.npmjs.com/package/eslint-plugin-playwright) and can be run using the script `npm run lint`
