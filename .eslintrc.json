@@ -1,0 +1,6 @@
+{
+    "extends": [
+        "plugin:playwright/playwright-test",
+        "eslint:recommended"
+    ]
+}
